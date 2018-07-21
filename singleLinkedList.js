@@ -12,7 +12,7 @@ function SLL(){
 function addToList(list, val){
     if (list.head === null){ // if the list.head is null, we can add a new node.
         list.head = new Node(val);
-    } else { // if the head is not null, we need to create a runner to find the end.
+    } else { // if the head is not null, we need to create a runner to find the end
         var runner = list.head; // runner will begin at the head of the list.
         while (runner.next != null){ // while the runner is pointing to something else, we continue through the list.
             runner = runner.next; // this will cause our runner to continue until the last value.
@@ -94,4 +94,34 @@ function palindrome(list) {
     }
 }
 
+/* -------- Find Nth to the last node -------- */
+function Kth_Last_Node(list, num) {
+    if (!list.head || num <= 0)
+        return undefined;
+
+    var runner = list.head;
+    var counter = 0;
+
+    while (runner.next) {
+        runner = runner.next;
+        counter++;
+    }
+
+    if (num > counter)
+        return undefined;
+
+    var target = counter - num + 1;
+    counter = 0;
+    runner = list.head;
+
+    while (counter < target) {
+        runner = runner.next;
+        counter++;
+    }
+
+    return runner.val;
+}
+
+
 /* -------- To do list-------- */
+// - Print all values in a list
