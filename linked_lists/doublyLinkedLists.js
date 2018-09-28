@@ -33,7 +33,3 @@ addToList(myDLL, 2);
 addToList(myDLL, 3);
 addToList(myDLL, 4);
 addToList(myDLL, 5);
-
-
-/* -------- To do list -------- */
-// - deleteLastNode

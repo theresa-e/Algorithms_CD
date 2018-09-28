@@ -118,10 +118,5 @@ function Kth_Last_Node(list, num) {
         runner = runner.next;
         counter++;
     }
-
     return runner.val;
 }
-
-
-/* -------- To do list-------- */
-// - Print all values in a list
