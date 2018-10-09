@@ -11,3 +11,19 @@ alternatingSums(a) = [180, 105]
 
 from codesignal.com
 ------------------------------------ */
+
+function alternatingSums(a) {
+    var team1 = []
+    var team2 = []
+    var teamWeights = [0, 0]
+    for (var i = 0; i < a.length; i++) {
+        if (i % 2 != 0) {
+            team1.push(a[i])
+            teamWeights[1] += a[i]
+        } else {
+            team2.push(a[i])
+            teamWeights[0] += a[i]
+        }
+    }
+    return teamWeights
+}
