@@ -9,7 +9,7 @@ function Node(val) {
     this.next = null;
 }
 
-/* -------- Add value to a stack -------- */
+/* -------- Insert element at top of stack -------- */
 function push(stack, val) {
     var addedNode = new Node(val);
     addedNode.next = stack.top;
@@ -17,7 +17,7 @@ function push(stack, val) {
     return stack;
 }
 
-/* -------- Remove value from stack -------- */
+/* -------- Remove element at top of stack -------- */
 function removeTop(stack) {
     if (stack.top != null) {
         var removedNode = stack.top;
@@ -29,6 +29,7 @@ function removeTop(stack) {
         return null;
     }
 }
+
 
 /* -------- Return two duplicates of a stack -------- */
 function duplicate(stack) {
@@ -62,7 +63,3 @@ function duplicate(stack) {
     }
     return [st2, st3]
 }
-
-
-/* -------- To do list -------- */
-// - Remove minimum value from a stack, return node.
