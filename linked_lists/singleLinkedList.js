@@ -1,52 +1,74 @@
-/* -------- Object Constructors -------- */
-function Node(val){
+// -------- Constructors -----------
+function Node(val) {
     this.val = val;
     this.next = null;
 }
 
-function SLL(){
+function SLL() {
     this.head = null;
 }
 
-/* -------- Add a node to SLL -------- */
-function addToList(list, val){
-    if (list.head === null){ // if the list.head is null, we can add a new node.
-        list.head = new Node(val);
-    } else { // if the head is not null, we need to create a runner to find the end
-        var runner = list.head; // runner will begin at the head of the list.
-        while (runner.next != null){ // while the runner is pointing to something else, we continue through the list.
-            runner = runner.next; // this will cause our runner to continue until the last value.
-        } // once the runner.next is a null value, we exit our for loop.
-        runner.next = new Node(val); // we've added a new node to the end!
-    }
-    return list;
-}
-
-/* -------- Reverse SLL -------- */
-    function reverseList(list) {
-        if (list.head == null) { // this list is too short
-            return {
-                status: false
-            };
-        } else {
-            var previous = list.head
+// -------- Add to end of SLL -----------
+SLL.prototype.add = function (val) {
+    // Early termination:
+    // If the head is null, then there are no nodes present.
+    // We can create a new node and set it as a the head.
+    if (this.head == null) {
+        this.head = new Node(val)
+    } else {
+        // If head is not null, we need to traverse the list to find the end.
+        var runner = this.head;
+        while (runner.next !== null) {
+            runner = runner.next;
         }
     }
+    // After we locate the end of the list, we will add the new node. 
+    runner.next = new Node(val)
+}
 
-/* -------- Find value in SLL -------- */
-function findVal(list, num){
+// -------- Reverse a SLL -----------
+SLL.prototype.reverse = function () {
+    // Early termination:
+    // If there is only one node, we do not need to reverse it.
+    if (!this.head.next) {
+        return this.head;
+    } else {
+        // Otherwise we need to change the pointers to point in the
+        // opposite direction.
+        var previous = this.head;
+        var current = previous.next;
+        while (current) {
+            // Temp variable will store next (so we don't lose it!)
+            var temp = current.next;
+            current.next = previous;
+            previous = current;
+            current = temp;
+        }
+    }
+    this.head = prev
+}
+
+// -------- Find node containing a val -----------
+function findVal(list, num) {
     var runner = list.head; // we start our runner at the head of our list.
-    while (runner){ // while the runner is not null, we continue.
-        if (runner.val === num ){
-            return {status: true, result: runner}; // if we find the value we are searching for
+    while (runner) { // while the runner is not null, we continue.
+        if (runner.val === num) {
+            return {
+                status: true,
+                result: runner
+            }; // if we find the value we are searching for
         } else {
             runner = runner.next; // if not, we should continue iterating through our list.
         }
     }
-    return: {status: false} // if we don't find what we are looking for, then we should return the status = false.
+    return {
+        // if we don't find what we are looking for, then we should return the status = false.
+        status: false
+    } 
 }
 
-/* -------- Find last node -------- */
+// -------- Find last node -----------
+
 function findEndNode(list) {
     runner = list.head;
     while (runner.next) {
@@ -55,7 +77,8 @@ function findEndNode(list) {
     return runner;
 }
 
-/* -------- Delete last node -------- */
+// -------- Delete last node -----------
+
 function deleteLastNode(list) {
     // if our list has only one node, remove it. 
     if (list.head.next == null) {
@@ -71,7 +94,8 @@ function deleteLastNode(list) {
 }
 
 
-/* -------- Check if list is a palindrome -------- */
+// -------- Check if list is a palindrome -----------
+
 function palindrome(list) {
     var values = [];
     if (list.head == null) {
@@ -94,7 +118,8 @@ function palindrome(list) {
     }
 }
 
-/* -------- Find Nth to the last node -------- */
+// -------- Find nth to the last node -----------
+
 function Kth_Last_Node(list, num) {
     if (!list.head || num <= 0)
         return undefined;

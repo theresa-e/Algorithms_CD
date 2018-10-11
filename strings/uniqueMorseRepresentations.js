@@ -56,7 +56,10 @@ var uniqueMorseRepresentations = function (words) {
 // letters and morsecode. 
 function getMorseKey() {
     var alphabet = "abcdefghijklmnopqrstuvwxyz"
-    var morseCode = [".-", "-...", "-.-.", "-..", ".", "..-.", "--.", "....", "..", ".---", "-.-", ".-..", "--", "-.", "---", ".--.", "--.-", ".-.", "...", "-", "..-", "...-", ".--", "-..-", "-.--", "--.."]
+    var morseCode = 
+    [".-", "-...", "-.-.", "-..", ".", "..-.", "--.", "....", "..",
+    ".---", "-.-", ".-..", "--", "-.", "---", ".--.", "--.-", ".-.",
+    "...", "-", "..-", "...-", ".--", "-..-", "-.--", "--.."]
     var morseKey = {}
     for (var i = 0; i < alphabet.length; i++) {
         morseKey[alphabet[i]] = morseCode[i]
