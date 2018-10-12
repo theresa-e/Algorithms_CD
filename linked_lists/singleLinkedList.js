@@ -49,7 +49,7 @@ SLL.prototype.reverse = function () {
 }
 
 // -------- Find node containing a val -----------
-function findVal(list, num) {
+SLL.prototype.findVal = function(list, num) {
     var runner = list.head; // we start our runner at the head of our list.
     while (runner) { // while the runner is not null, we continue.
         if (runner.val === num) {
@@ -68,8 +68,7 @@ function findVal(list, num) {
 }
 
 // -------- Find last node -----------
-
-function findEndNode(list) {
+SLL.prototype.findEndNode = function(list) {
     runner = list.head;
     while (runner.next) {
         runner = runner.next;
@@ -78,8 +77,7 @@ function findEndNode(list) {
 }
 
 // -------- Delete last node -----------
-
-function deleteLastNode(list) {
+SLL.prototype.deleteLastNode = function(list) {
     // if our list has only one node, remove it. 
     if (list.head.next == null) {
         list.head = null;
@@ -93,10 +91,36 @@ function deleteLastNode(list) {
     return list;
 }
 
+// -------- Delete a node with a given val -----------
+SLL.prototype.delete = function(list, val) {
+    if (list.head == null){
+        return false;
+    }
+    if (list.val == val) {
+        // set the head to point to next.
+        list = list.next
+    } else {
+        var runner = list
+        var previous = null
+        while (runner) {
+            if (runner.val == val) {
+                // found the value.
+                // we'll point the previous node to the node ahead
+                previous.next = runner.next;
+                return true;
+            } else {
+                // haven't found the value yet. keep traversing the list.
+                previous = runner;
+                runner = runner.next;
+            }
+        }
+        // value was not found --> return false
+        return false;
+    }
+}
 
 // -------- Check if list is a palindrome -----------
-
-function palindrome(list) {
+SLL.prototype.palindrome = function(list) {
     var values = [];
     if (list.head == null) {
         return false;
@@ -119,8 +143,7 @@ function palindrome(list) {
 }
 
 // -------- Find nth to the last node -----------
-
-function Kth_Last_Node(list, num) {
+SLL.prototype.kthLastNode = function(list, num) {
     if (!list.head || num <= 0)
         return undefined;
 

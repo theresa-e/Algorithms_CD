@@ -1,16 +1,16 @@
-/* -------- Object Constructors -------- */
-function DLL() {
-    this.head = null;
-}
-
+// -------- Object Constructors -------- 
 function Node(val) {
     this.val = val;
     this.next = null;
     this.prev = null;
 }
 
-/* -------- Add to DLL -------- */
-function addToList(list, val) {
+function DLL() {
+    this.head = null;
+}
+
+// -------- Add to DLL -------- 
+DLL.prototype.addToList = function(list, val) {
     if (list.head === null) {
         list.head = new Node(val);
     } else {
