@@ -98,6 +98,7 @@ SLL.prototype.delete = function(list, val) {
     }
     if (list.val == val) {
         // set the head to point to next.
+        // The first value in the list is the one we were looking for!
         list = list.next
     } else {
         var runner = list
