@@ -3,7 +3,7 @@ function BST() {
     this.root = null;
 }
 
-BST.prototype.Node = function (val) {
+function Node(val) {
     this.val = val;
     this.left = null;
     this.right = null;
@@ -13,9 +13,9 @@ BST.prototype.Node = function (val) {
 BST.prototype.addNode = function (val) {
     if (this.root == null) {
         this.root = new BST.prototype.Node(val);
-        return this;
+        return;
     } else {
-        var newNode = new BST.prototype.Node(val);
+        var newNode = new Node(val);
         var runner = this.root
         while (runner) {
             if (val <= runner.val) {
@@ -54,3 +54,51 @@ BST.prototype.removeNode = function (BST, val) {
         }
     }
 }
+
+
+/* -------- Traversal -------- */
+
+// PreOrder
+BST.prototype.preOrderTraversal = function () {
+    if (this.root == null) {
+        return null;
+    } else {
+        var traversePreorder = function (node) {
+            nodes.push(node.val);
+            if (node.left) {
+                traversePreorder(node.left);
+            }
+            if (node.right) {
+                traversePreorder(node.right);
+            }
+        }
+        // store values in a stack
+        var nodes = [];
+        traversePreorder(this.root);
+        return nodes;
+    }
+}
+
+BST.prototype.inOrderTraversal = function () {
+    if (this.root == null) {
+        return null;
+    } else {
+        var traverseInOrder = function(node) {
+            if (node.left) {
+                traverseInOrder(node.left);
+            } if (node.right) {
+                traverseInOrder(node.right);
+            }
+            nodes.push(node.val)
+        }
+        var nodes = [];
+        traverseInOrder(this.root);
+        return nodes;
+    }
+}
+
+var myBST = new BST()
+myBST.root = new Node(1)
+myBST.addNode(2)
+myBST.addNode(4)
+myBST.preOrderTraversal()

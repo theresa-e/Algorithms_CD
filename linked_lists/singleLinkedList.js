@@ -92,14 +92,14 @@ SLL.prototype.deleteLastNode = function(list) {
 }
 
 // -------- Delete a node with a given val -----------
-SLL.prototype.delete = function(list, val) {
-    if (list.head == null){
+SLL.prototype.delete = function(val) {
+    if (this.head == null){
         return false;
     }
-    if (list.val == val) {
+    if (this.head.val == val) {
         // set the head to point to next.
         // The first value in the list is the one we were looking for!
-        list = list.next
+        list = this.head.next
     } else {
         var runner = list
         var previous = null
@@ -121,12 +121,12 @@ SLL.prototype.delete = function(list, val) {
 }
 
 // -------- Check if list is a palindrome -----------
-SLL.prototype.palindrome = function(list) {
+SLL.prototype.palindrome = function() {
     var values = [];
-    if (list.head == null) {
+    if (this.head == null) {
         return false;
     } else {
-        runner = list.head;
+        runner = this.head;
         while (runner) {
             values.push(runner.val);
             runner = runner.next;

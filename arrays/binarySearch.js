@@ -26,7 +26,7 @@ function binarySearchIterative(array, val) {
     var left = 0;
     var right = array.length - 1;
     while (left <= right) {
-        var mid = (right - left) / 2;
+        var mid = Math.floor(right - left) / 2;
         if (array[mid] == val) {
             // We found the value! 
             return true;
