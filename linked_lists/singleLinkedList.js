@@ -21,15 +21,20 @@ SLL.prototype.add = function (val) {
         while (runner.next !== null) {
             runner = runner.next;
         }
+        // After we locate the end of the list, we will add the new node. 
+        runner.next = new Node(val)
     }
-    // After we locate the end of the list, we will add the new node. 
-    runner.next = new Node(val)
+    console.log(this.head)
 }
 
 // -------- Reverse a SLL -----------
 SLL.prototype.reverse = function () {
     // Early termination:
-    // If there is only one node, we do not need to reverse it.
+    // If the head is null, there is nothing to reverse.
+    if (this.head == null) {
+        return null;
+    }
+    // Only one node; return the head. 
     if (!this.head.next) {
         return this.head;
     } else {
@@ -45,11 +50,11 @@ SLL.prototype.reverse = function () {
             current = temp;
         }
     }
-    this.head = prev
+    return previous;
 }
 
 // -------- Find node containing a val -----------
-SLL.prototype.findVal = function(list, num) {
+SLL.prototype.findVal = function (list, num) {
     var runner = list.head; // we start our runner at the head of our list.
     while (runner) { // while the runner is not null, we continue.
         if (runner.val === num) {
@@ -64,11 +69,11 @@ SLL.prototype.findVal = function(list, num) {
     return {
         // if we don't find what we are looking for, then we should return the status = false.
         status: false
-    } 
+    }
 }
 
 // -------- Find last node -----------
-SLL.prototype.findEndNode = function(list) {
+SLL.prototype.findEndNode = function (list) {
     runner = list.head;
     while (runner.next) {
         runner = runner.next;
@@ -77,7 +82,7 @@ SLL.prototype.findEndNode = function(list) {
 }
 
 // -------- Delete last node -----------
-SLL.prototype.deleteLastNode = function(list) {
+SLL.prototype.deleteLastNode = function (list) {
     // if our list has only one node, remove it. 
     if (list.head.next == null) {
         list.head = null;
@@ -92,8 +97,8 @@ SLL.prototype.deleteLastNode = function(list) {
 }
 
 // -------- Delete a node with a given val -----------
-SLL.prototype.delete = function(val) {
-    if (this.head == null){
+SLL.prototype.delete = function (val) {
+    if (this.head == null) {
         return false;
     }
     if (this.head.val == val) {
@@ -121,7 +126,7 @@ SLL.prototype.delete = function(val) {
 }
 
 // -------- Check if list is a palindrome -----------
-SLL.prototype.palindrome = function() {
+SLL.prototype.palindrome = function () {
     var values = [];
     if (this.head == null) {
         return false;
@@ -144,7 +149,7 @@ SLL.prototype.palindrome = function() {
 }
 
 // -------- Find nth to the last node -----------
-SLL.prototype.kthLastNode = function(list, num) {
+SLL.prototype.kthLastNode = function (list, num) {
     if (!list.head || num <= 0)
         return undefined;
 
@@ -169,3 +174,8 @@ SLL.prototype.kthLastNode = function(list, num) {
     }
     return runner.val;
 }
+
+var mySLL = new SLL();
+mySLL.add(1)
+mySLL.add(2)
+mySLL.add(3)
